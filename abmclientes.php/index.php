@@ -11,7 +11,7 @@ error_reporting(E_ALL);
     $jsonClientes = file_get_contents("archivo.txt");
 
     $aClientes = json_decode($jsonClientes, true);
-    print_r($aClientes);
+    
   }else{
     $aClientes = array() ;
   }
