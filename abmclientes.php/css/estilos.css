@@ -1,0 +1,388 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+#proyectos {
+    background-image: url("../imagenes/fondo-proyectos.png");
+    background-size: cover;
+}
+
+@media (max-width: 750px) {
+    #proyectos {
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+}
+
+#contacto {
+    background-image: url("../imagenes/fondo-contacto.png");
+    background-size: cover;
+}
+
+#inicio {
+    background-image: url("../imagenes/fondo-contacto.png");
+    background-size: cover;
+}
+
+
+#proyectos img {
+    height: 210px;
+}
+
+.color {
+    background: linear-gradient(to right, rgba(184, 37, 20, 1) 0%, rgba(214, 52, 30, 1) 47%, rgba(240, 47, 23, 1) 70%, rgba(240, 47, 23, 1) 100%);
+}
+
+#proyectos h2 {
+    font-size: 16px;
+    color: white;
+}
+
+#proyectos p {
+    font-size: 14px;
+    color: #6a6a6a
+}
+
+h1 {
+    color: #e20000;
+    font-size: 36px;
+}
+
+p {
+    color: #6a6a6a;
+}
+
+nav .active {
+    border: 1px solid #e20000;
+    border-radius: 20px;
+
+}
+
+.cv {
+    background-color: #e20000;
+    border-radius: 15px;
+    text-align: center;
+    padding: 5px 11px 5px 11px;
+}
+
+.cv a {
+    color: white;
+    text-decoration: none;
+    font-weight: 100;
+}
+
+.cv:hover {
+    background-color: #370a6d;
+}
+
+.btn {
+    color: #370a6d;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.btn:hover {
+    color: white;
+    background-color: #370a6d;
+}
+
+.btn-rojo {
+    color: white;
+    background-color: #e20000;
+    border-radius: 15px;
+
+}
+
+.btn-rojo:hover {
+    color: white;
+    background-color: #370a6d;
+    cursor: pointer;
+
+}
+
+.btn-rojo {
+    text-decoration: none;
+    padding: 8px;
+    border-radius: 15px;
+    font-weight: 100;
+}
+
+.link-rojo {
+    text-decoration: none;
+    color: #e20000;
+}
+
+.proyecto {
+    background-color: white;
+}
+
+@media (max-height: 750px) {
+    textarea {
+        height: 110px;
+    }
+}
+
+
+.btn-whatsapp {
+    position: fixed;
+    background-color: #370a6d;
+    color: white;
+    text-align: center;
+    right: 35px;
+    width: 60px;
+    bottom: 0px;
+    padding: 8px 15px;
+    font-size: 30px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+
+footer {
+    color: white;
+    font-weight: 100;
+}
+
+footer a {
+    color: white;
+}
+
+footer .fa-linkedin-in {
+    color: #ff4a49;
+    background-color: white;
+    font-size: 20px;
+    height: 32px;
+    width: 32px;
+    text-align: center;
+    padding: 8px 0 0 0;
+    border-radius: 80px;
+    margin: 0 8px;
+}
+
+footer .fa-github {
+    font-size: 30px;
+    color: white;
+}
+
+.proyecto p {
+    height: 180px;
+}
+
+#proyectos footer .fa-linkedin-in {
+    color: white;
+    background-color: #e20000;
+    font-size: 20px;
+    height: 32px;
+    width: 32px;
+    text-align: center;
+    padding: 8px 0 0 0;
+    border-radius: 80px;
+    margin: 0 8px;
+}
+
+#proyectos footer .fa-github {
+    font-size: 30px;
+    color: #e20000;
+}
+
+#proyectos footer {
+    color: #ff4a49;
+}
+
+#proyectos footer a {
+    color: #ff4a49;
+}
+
+.img-circle {
+    border-radius: 50%;
+    padding: 10px;
+    background-color: white;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+#tecnologia {
+    background: linear-gradient(to right, rgba(184, 37, 20, 1) 0%, rgba(214, 52, 30, 1) 47%, rgba(240, 47, 23, 1) 70%, rgba(240, 47, 23, 1) 100%);
+    background-size: cover;
+}
+
+#tecnologia h3 {
+    font-size: 14px;
+    font-weight: 300;
+}
+
+#tecnologia h2 {
+    font-size: 24px;
+
+}
+
+#tecnologia img {
+    height: 60px;
+}
+
+.java,
+.php,
+.html,
+.react,
+.jquery,
+.bootstrap {
+    background-color: white;
+}
+
+#experiencia h2 {
+    font-size: 24px;
+    font-weight: 400;
+    color: #370A6D;
+}
+
+#experiencia img {
+    height: auto;
+    vertical-align: middle;
+}
+
+#desarrollo img {
+    height: auto;
+    vertical-align: middle;
+    }
+
+#experiencia h3,
+#formacion h3 {
+    color: #6A6A6A;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#experiencia h4 {
+    color: #370A6D;
+    font-size: 17px;
+}
+
+#experiencia h5,
+#formacion h5 {
+    color: #6A6A6A;
+    font-size: 14px;
+}
+
+#desarrollo h2 {
+    font-size: 24px;
+    font-weight: 400;
+    color: #e20000;
+}
+
+#desarrollo img {
+    height: auto;
+    vertical-align: middle;
+}
+
+#desarrollo h3,
+#desarrollo h3 {
+    color: #6A6A6A;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#desarrollo h4 {
+    color: #e20000;
+    font-size: 17px;
+}
+
+#desarrollo h5,
+#desarrollo h5 {
+    color: #6A6A6A;
+    font-size: 14px;
+}
+
+
+
+@media (min-width: 576px) {
+    .col-sm-6 {
+        flex: 0 0 auto;
+        width: 50%;
+    }
+}
+
+@media (min-width: 576px) {
+    .col-sm-10 {
+        flex: 0 0 auto;
+        width: 83.3333333333%;
+    }
+}
+
+#idiomas {
+    background-color: #eee;
+}
+
+#idiomas .fas {
+    font-size: 80px;
+    color: white;
+}
+#idiomas h2{
+    font-size: 16px;
+}
+
+
+.bg-white {
+    background-color: #fff;
+}
+#idiomas .card-idioma {
+    border-radius: 15px;
+}       
+#idiomas .icon{
+    background-color: #370a6d;
+    border-radius: 15px;
+    padding: 43px 0;
+}
+#idiomas .card-idioma{
+    border-radius: 15px;
+}
+#idiomas ul {
+    padding: 0px;
+    font-size: 14px;
+    color: #282828;
+    list-style-type: none;
+}
+
+#proyectos footer .fa-linkedin-in {
+    color: white;
+    background-color: #e20000;
+    font-size: 20px;
+    height: 32px;
+    width: 32px;
+    text-align: center;
+    padding: 8px 0 0 0;
+    border-radius: 80px;
+    margin: 0 8px;
+}
+#sobre-mi footer .fa-github {
+    font-size: 30px;
+    color: #e20000;
+}
+#sobre-mi footer {
+    color: #ff4a49;
+}
+#sobre-mi footer a {
+    color: #ff4a49;
+}
+#inicio img{
+    height: 400px;
+}
+
+#inicio img:hover{
+    height: 410px;
+}
+
+#inicio .div-cohete{
+    height: 410px;
+}
+.input-home p{
+    border: 1px solid white;
+    color: white;
+    font-size: 17px;
+    border-radius: 50px;
+    font-weight: 600;
+}
