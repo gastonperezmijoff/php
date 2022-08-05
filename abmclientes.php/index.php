@@ -21,6 +21,7 @@ error_reporting(E_ALL);
 //Si no existe el archivo
     //Creamos un aClientes inicializado como un array vacio
 
+    $pos = isset($_GET["pos"]) && $_GET["pos"] >= 0? $_GET["pos"]:"";
 
 if($_POST){
 
@@ -31,15 +32,26 @@ $correo = trim($_POST["txtCorreo"]);
 
 //Creamos un array que contendrá el listado de clientes
 
-$aClientes[] = array("documento" => $documento,
+if($pos>=0){
+    //Actualizar
+    $aClientes[$pos] = array("documento" => $documento,
                      "nombre" => $nombre,
                      "telefono" => $telefono,
-                     "correo" => $correo);
+                     "correo" => $correo,
+                     "imagen" => $nombreImagen);
 
+}else{
+    //Insertar
+
+    $aClientes[] = array("documento" => $documento,
+                     "nombre" => $nombre,
+                     "telefono" => $telefono,
+                     "correo" => $correo,
+                     "imagen" => $nombreImagen);
+}
 //Convertir el array de acliente en json
 
 $jsonClientes = json_encode($aClientes);
-
 
 
 //Almacenar el string jsonClientes en el archivo "archivo.txt"
@@ -48,6 +60,17 @@ file_put_contents("archivo.txt", $jsonClientes);
 
 }
 
+if(isset($_GET["do"]) && $_GET["do"] == "eliminar"){
+   unset($aClientes[$pos]);
+
+   //Convertir el array de clientes en jsonClientes
+   $jsonClientes = json_encode($aClientes);
+
+   //Almacenar el string jsonClientes en el "archivo.txt"
+
+   file_put_contents("archivo.txt", $jsonClientes,);
+   header("location:index.php");
+}
 
 
 ?>
@@ -75,22 +98,22 @@ file_put_contents("archivo.txt", $jsonClientes);
 
             <div class="pb-2">
                     <label for=" txtDocumento">DNI:</label>
-                    <input type="text" name="txtDocumento" id="txtDocumento" class="form-control my-1">
+                    <input type="text" name="txtDocumento" id="txtDocumento" class="form-control my-1" require value="<?php echo isset($aClientes[$pos])? $aClientes[$pos]["documento"] : ""; ?>">
                 </div>
 
                 <div class="pb-2">
                     <label for="txtNombre">Nombre:</label>
-                    <input type="text" name="txtNombre" id="txtNombre" class="form-control my-1">
+                    <input type="text" name="txtNombre" id="txtNombre" class="form-control my-1" require value="<?php echo isset($aClientes[$pos])? $aClientes[$pos]["nombre"] : ""; ?>">
                 </div>
 
                 <div class="pb-2">
                     <label for=" txtTelefono">Telefono:</label>
-                    <input type="text" name="txtTelefono" id="txtTelefono" class="form-control my-1">
+                    <input type="text" name="txtTelefono" id="txtTelefono" class="form-control my-1" require value="<?php echo isset($aClientes[$pos])? $aClientes[$pos]["telefono"] : ""; ?>">
                 </div>
 
                 <div class="pb-2">
                     <label for="txtCorreo">Correo:</label>
-                    <input type="text" name="txtCorreo" id="txtCorreo" class="form-control my-1">
+                    <input type="text" name="txtCorreo" id="txtCorreo" class="form-control my-1" require value="<?php echo isset($aClientes[$pos])? $aClientes[$pos]["correo"] : ""; ?>">
                 </div>
                 <div class="pb-2">
                    <label for="">Adjuntar archivo: </label>
@@ -120,15 +143,15 @@ file_put_contents("archivo.txt", $jsonClientes);
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($aClientes as $cliente):  ?>
+                        <?php foreach($aClientes as $pos => $cliente):  ?>
                         <tr>
                             <td></td>
                             <td><?php echo $cliente["documento"]; ?></td>
                             <td><?php echo $cliente["nombre"]; ?></td>
                             <td><?php echo $cliente["correo"]; ?></td>
                             <td>
-                                <a href=""><i class="bi bi-pencil"></i></a>
-                                <a href=""><i class="bi bi-trash3-fill"></i></a>
+                                <a href="index.php?pos=<?php echo $pos; ?>&do=editar"><i class="bi bi-pencil"></i></a>
+                                <a href="index.php?pos=<?php echo $pos; ?>&do=eliminar"><i class="bi bi-trash3-fill"></i></a>
                             </td>
                             
                             <td></td>
