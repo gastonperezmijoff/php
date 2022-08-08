@@ -44,11 +44,14 @@ if($pos>=0){
             move_uploaded_file($archivo_temp, "imagenes/$nombreImagen");
         }
         //Eliminar la imagen anterior
-        unset($aClientes["imagen"]);
+
+        if($aClientes[$pos]["imagen"] != "" && file_exists("imagenes/".$aClientes[$pos]["imagen"])){
+        unlink("imagenes/".$aClientes[$pos]["imagen"]);
+        }
     }else 
     //Mantener el nombre imagen que teniamos antes
-    
 
+        $nombreImagen = $aClientes[$pos]["imagen"];
 
     //Actualizar
     $aClientes[$pos] = array("documento" => $documento,
