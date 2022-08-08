@@ -29,10 +29,27 @@ $nombre = trim($_POST["txtNombre"]);
 $documento = trim($_POST["txtDocumento"]);
 $telefono = trim($_POST["txtTelefono"]);
 $correo = trim($_POST["txtCorreo"]);
+$nombreImagen = "";
 
 //Creamos un array que contendrá el listado de clientes
 
 if($pos>=0){
+
+    if($_FILES["archivo"]["error"] === UPLOAD_ERR_OK){
+        $nombreAleatorio = date("Ymdhmsi");
+        $archivo_temp = $_FILES["archivo"] ["tmp_name"];
+        $extension = strtolower(pathinfo($_FILES["archivo"] ["name"], PATHINFO_EXTENSION));
+        if($extension == "jpg" || "doc" == "jpeg" || "doc" == "png"){
+            $nombreImagen = $nombreAleatorio.$extension;
+            move_uploaded_file($archivo_temp, "imagenes/$nombreImagen");
+        }
+        //Eliminar la imagen anterior
+        unset($aClientes["imagen"]);
+    }else 
+    //Mantener el nombre imagen que teniamos antes
+    
+
+
     //Actualizar
     $aClientes[$pos] = array("documento" => $documento,
                      "nombre" => $nombre,
@@ -42,7 +59,15 @@ if($pos>=0){
 
 }else{
     //Insertar
-
+    if($_FILES["archivo"]["error"] === UPLOAD_ERR_OK){
+    $nombreAleatorio = date("Ymdhmsi");
+    $archivo_temp = $_FILES["archivo"] ["tmp_name"];
+    $extension = strtolower(pathinfo($_FILES["archivo"] ["name"], PATHINFO_EXTENSION));
+    if($extension == "jpg" || "doc" == "jpeg" || "doc" == "png"){
+        $nombreImagen = $nombreAleatorio.$extension;
+        move_uploaded_file($archivo_temp, "imagenes/$nombreImagen");
+    }
+}
     $aClientes[] = array("documento" => $documento,
                      "nombre" => $nombre,
                      "telefono" => $telefono,
@@ -97,7 +122,7 @@ if(isset($_GET["do"]) && $_GET["do"] == "eliminar"){
             <div class="col-5">
 
             <div class="pb-2">
-                    <label for=" txtDocumento">DNI:</label>
+                    <label for="txtDocumento">DNI:</label>
                     <input type="text" name="txtDocumento" id="txtDocumento" class="form-control my-1" require value="<?php echo isset($aClientes[$pos])? $aClientes[$pos]["documento"] : ""; ?>">
                 </div>
 
@@ -145,8 +170,10 @@ if(isset($_GET["do"]) && $_GET["do"] == "eliminar"){
                     <tbody>
                         <?php foreach($aClientes as $pos => $cliente):  ?>
                         <tr>
-                            <td></td>
-                            <td><?php echo $cliente["documento"]; ?></td>
+                            <td> <?php if($cliente["imagen"]): ?>
+                                <img src="imagenes/<?php echo $cliente["imagen"] ; ?>" class="img-thumbnail" alt=""></td>
+                                <?php endif ?>
+                                <td><?php echo $cliente["documento"]; ?></td>
                             <td><?php echo $cliente["nombre"]; ?></td>
                             <td><?php echo $cliente["correo"]; ?></td>
                             <td>
