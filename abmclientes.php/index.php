@@ -35,7 +35,7 @@ $nombreImagen = "";
 
 if($pos>=0){
 
-    if($_FILES["archivo"]["error"] === UPLOAD_ERR_OK){
+     if($_FILES["archivo"]["error"] === UPLOAD_ERR_OK){
         $nombreAleatorio = date("Ymdhmsi");
         $archivo_temp = $_FILES["archivo"] ["tmp_name"];
         $extension = strtolower(pathinfo($_FILES["archivo"] ["name"], PATHINFO_EXTENSION));
@@ -53,8 +53,9 @@ if($pos>=0){
 
         $nombreImagen = $aClientes[$pos]["imagen"];
 
+
     //Actualizar
-    $aClientes[$pos] = array("documento" => $documento,
+$aClientes[$pos] = array("documento" => $documento,
                      "nombre" => $nombre,
                      "telefono" => $telefono,
                      "correo" => $correo,
