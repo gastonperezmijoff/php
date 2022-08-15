@@ -16,7 +16,7 @@ $aProductos[] = array(
     "nombre" => "Samsung Galaxy A30 Blanco",
     "marca" => "Samsung",
     "modelo" => "Galaxy A30",
-    "stock" => 0,
+    "stock" => 20,
     "precio" => 22000,
 );
 $aProductos[] = array(
