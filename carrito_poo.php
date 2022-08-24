@@ -69,13 +69,13 @@ class Producto {
 class Carrito {
     private $cliente;
     private $aProductos;
-    private $subtotal;
+    private $subTotal;
     private $total;
 
     public function __construct()
     {
         $this -> aProductos = array();
-        $this -> subtotal = 0.0;
+        $this -> subTotal = 0.0;
         $this -> total = 0.0;
     }
 
@@ -86,11 +86,40 @@ class Carrito {
     }
 
     public function imprimirTicket(){
-        echo "<table class='table table-hover border'>" ;
+        echo "<table class='table table-hover border' style='width:400px'>" ;
         echo "<tr><th colspan='2' class='text-center'>ECO MARKET</th></tr>
-        <tr>
-        <th>Fecha</th>
-            </tr>"
+         <tr>
+         <th>Fecha</th>
+         <td>" . date("d/m/Y H:i:s") . "</td>
+         </tr>
+         <tr>
+         <th>DNI</th>
+         <td>" . $this-> cliente->dni ."</td>
+         </tr>
+         <tr>
+         <th>Nombre</th>
+         <td>" . $this-> cliente->nombre . "</td>
+         </tr>
+         <tr>
+         <th colspan='2'>Producto:</th>
+         </tr>";
+         foreach($this->aProductos as $producto){
+            echo "<tr>
+                        <td>" . $producto->nombre ."</td>
+                        <td>$ " . number_format($producto->precio, 2, ",", ".") . "</td>
+                        </tr>";
+                        $this->subTotal += $producto->precio;
+                        $this->total += $producto->precio * (($producto->iva / 100)+1);
+
+         }
+         echo "<tr>
+        <th>Subtotal s/iva: </th>
+        <td>" . $this->subTotal . "</td>
+         </tr>";
+         echo "<tr>
+         <th>TOTAL:</th>
+         <td>" . $this->total . "</td>
+          </tr>";
 
     }
 
@@ -115,7 +144,7 @@ $cliente1 -> telefono = " 1134256987";
 $cliente1 -> descuento = " 0.05";
 
 //print_r($cliente1)
-$cliente1 -> imprimir();
+//$cliente1 -> imprimir();
 
 $producto1 = new Producto();
 $producto1 -> codigo = "ABC56987";
@@ -123,7 +152,7 @@ $producto1 -> nombre = "Notebook 15\" HP";
 $producto1 -> descripcion = "es una computadora HP";
 $producto1 -> precio = 30.800;
 $producto1 -> iva = 21;
-$producto1 -> imprimir();
+//$producto1 -> imprimir();
 
 
 $producto2 = new Producto();
@@ -132,15 +161,15 @@ $producto2 -> nombre = "Heladera Wirpool";
 $producto2 -> descripcion = "Esto es una heladera no froze";
 $producto2 -> precio = 70.000;
 $producto2 -> iva = 10.5;
-$producto2 -> imprimir() ;
+//$producto2 -> imprimir() ;
 
 $carrito = new Carrito();
 $carrito -> cliente = $cliente1;
 //print_r($carrito);
 $carrito -> cargarProducto($producto1);
 $carrito -> cargarProducto($producto2);
-print_r($carrito);
-$carrito -> imprimirTicket(); //imprime el ticket de la compra
+//print_r($carrito);
+
 
 
 
