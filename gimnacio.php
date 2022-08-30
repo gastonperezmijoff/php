@@ -19,6 +19,7 @@ class Persona{
        $this -> $propiedad = $valor;
    }
 }
+
 class Alumno extends Persona{
     private $fechaNac;
     private $peso;
