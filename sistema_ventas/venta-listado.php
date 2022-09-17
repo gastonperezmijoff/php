@@ -8,8 +8,8 @@ include_once("header.php");
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-12 mb-3">
-            <h2>Listado de ventas</h2>
+        <div class="col-12">
+            <h1 class="h3 mb-4 text-gray-800">Listado de ventas</h1>
         </div>
         <div class="col-12 mb-3">
             <a href="venta-listado.php" class="btn btn-primary mr-2">Nuevo></a>

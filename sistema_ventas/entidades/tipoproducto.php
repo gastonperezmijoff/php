@@ -24,18 +24,22 @@ class TipoProducto
         return $this;
     }
 
-
+    public function cargarFormulario($request)
+    {
+        $this->idcliente = isset($request["id"]) ? $request["id"] : "";
+        $this->nombre = isset($request["txtNombre"]) ? $request["txtNombre"] : "";
+}
 
     public function insertar()
     {
         //Instancia la clase mysqli con el constructor parametrizado
         $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE, Config::BBDD_PORT);
         //Arma la query
-        $sql = "INSERT INTO tipoproductos (
-                    nombre,
+        $sql = "INSERT INTO tipo_productos (
+                    nombre
                     
                 ) VALUES (
-                    '$this->nombre',
+                    '$this->nombre'
                );";
         // print_r($sql);exit;
         //Ejecuta la query
@@ -43,7 +47,7 @@ class TipoProducto
             printf("Error en query: %s\n", $mysqli->error . " " . $sql);
         }
         //Obtiene el id generado por la inserción
-        $this->idproducto = $mysqli->insert_id;
+        $this->idtipoproducto = $mysqli->insert_id;
         //Cierra la conexión
         $mysqli->close();
     }
@@ -53,7 +57,7 @@ class TipoProducto
 
         $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE, Config::BBDD_PORT);
         $sql = "UPDATE tipo_productos SET
-                nombre = '$this->nombre',
+                nombre = '$this->nombre'
                 WHERE idtipoproducto = $this->idtipoproducto";
 
         if (!$mysqli->query($sql)) {

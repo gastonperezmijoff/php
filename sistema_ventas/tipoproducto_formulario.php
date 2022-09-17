@@ -1,8 +1,18 @@
 <?php
 
 include_once("config.php"); 
-include_once("header.php"); 
 
+include_once("entidades/tipoproducto.php"); 
+
+if($_POST){
+    if(isset($_POST["btnGuardar"])){
+        $tipoProducto = new TipoProducto();
+        $tipoProducto ->cargarFormulario($_REQUEST);
+        $tipoProducto -> insertar();
+    }
+}
+
+include_once("header.php");
 ?>
         <!-- Begin Page Content -->
         <div class="container-fluid">
