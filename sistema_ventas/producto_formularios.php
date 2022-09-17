@@ -53,11 +53,11 @@ include_once("header.php");
             });
     </script>
         </div>
+        <div class="col-6">
+                <label for="fileImagen">Imagen:</label>
+                <input type="file" class="form-control-file" name="imagen" id="imagen">
+        </div>
     </div>
-
-
-
-
 
 </div>
 
