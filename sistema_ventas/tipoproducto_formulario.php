@@ -7,8 +7,8 @@ include_once("entidades/tipoproducto.php");
 if($_POST){
     if(isset($_POST["btnGuardar"])){
         $tipoProducto = new TipoProducto();
-        $tipoProducto ->cargarFormulario($_REQUEST);
-        $tipoProducto -> insertar();
+        $tipoProducto->cargarFormulario($_REQUEST);
+        $tipoProducto->insertar();
     }
 }
 
