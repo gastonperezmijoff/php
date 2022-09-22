@@ -66,7 +66,7 @@ class Venta
         $sql = "UPDATE ventas SET
                 fecha = '$this->fecha',
                 cantidad = $this->cantidad,
-                preciounitario = $this-preciounitario,
+                preciounitario = $this->preciounitario,
                 total = $this->total,
                 fk_idcliente =  $this->fk_idcliente,
                 fk_idproducto =  $this->fk_idproducto

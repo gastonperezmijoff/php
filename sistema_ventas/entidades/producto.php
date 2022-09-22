@@ -31,7 +31,7 @@ class Producto
 
     public function cargarFormulario($request)
     {
-        $this->idcliente = isset($request["id"]) ? $request["id"] : "";
+        $this->idproducto = isset($request["id"]) ? $request["id"] : "";
         $this->nombre = isset($request["txtNombre"]) ? $request["txtNombre"] : "";
         $this->cuit = isset($request["txtCuit"]) ? $request["txtCuit"] : "";
         $this->telefono = isset($request["txtTelefono"]) ? $request["txtTelefono"] : "";
