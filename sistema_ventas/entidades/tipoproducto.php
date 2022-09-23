@@ -90,7 +90,7 @@ class TipoProducto
 
         //Convierte el resultado en un array asociativo
         if ($fila = $resultado->fetch_assoc()) {
-            $this->idtipoproducto = $fila["tipoproducto"];
+            $this->idtipoproducto = $fila["idtipoproducto"];
             $this->nombre = $fila["nombre"];
         
         }
