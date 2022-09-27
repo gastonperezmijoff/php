@@ -37,6 +37,7 @@ class Producto
         $this->cantidad = isset($request["txtCantidad"]) ? $request["txtCantidad"] : 0;
         $this->precio = isset($request["txtPrecio"]) ? $request["txtPrecio"] : 0;
         $this->descripcion = isset($request["txtDescripcion"]) ? $request["txtDescripcion"] : "";
+        $this->imagen = isset($request["fileImagen"]) ? $request["fileImagen"] : "";
         $this->fk_idtipoproducto = isset($request["lstTipoProducto"]) ? $request["lstTipoProducto"] : "";
         }
     
@@ -111,6 +112,7 @@ class Producto
                         cantidad,
                         precio,
                         descripcion,
+                        imagen,
                         fk_idtipoproducto
                 FROM productos
                 WHERE idproducto = $this->idproducto";
@@ -125,6 +127,7 @@ class Producto
             $this->cantidad = $fila["cantidad"];
             $this->precio = $fila["precio"];
             $this->descripcion = $fila["descripcion"];
+            $this->imagen = $fila["imagen"];
             $this->fk_idtipoproducto = $fila["fk_idtipoproducto"];
 
         }
@@ -139,6 +142,7 @@ class Producto
                        cantidad,
                        precio,
                        descripcion,
+                       imagen,
                        fk_idtipoproducto
                 FROM productos";
         if (!$resultado = $mysqli->query($sql)) {
@@ -153,8 +157,10 @@ class Producto
                 $entidadAux = new Producto();
                 $entidadAux->idproducto = $fila["idproducto"];
                 $entidadAux->nombre = $fila["nombre"];
+                $entidadAux->precio = $fila["precio"];
                 $entidadAux->cantidad = $fila["cantidad"];
                 $entidadAux->descripcion = $fila["descripcion"];
+                $entidadAux->imagen = $fila["imagen"];
                 $entidadAux->fk_idtipoproducto = $fila["fk_idtipoproducto"];
 
                 $aResultado[] = $entidadAux;
