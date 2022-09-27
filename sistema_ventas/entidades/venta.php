@@ -26,7 +26,16 @@ class Venta
         $this->$atributo = $valor;
         return $this;
     }
-
+    public function cargarFormulario($request)
+    {
+        $this->idventa = isset($request["id"]) ? $request["id"] : "";
+        $this->fecha = isset($request["txtFecha"]) ? $request["txtFecha"] : "";
+        $this->cantidad = isset($request["txtCantidad"]) ? $request["txtCantidad"] : "";
+        $this->preciounitario = isset($request["txtPrecioUnitario"]) ? $request["txtPrecioUnitario"] : "";
+        $this->total= isset($request["txtTotal"]) ? $request["txtTotal"] : "";
+        $this->fk_idcliente = isset($request["lstCliente"]) ? $request["lstCliente"] : "";
+        $this->fk_idproducto = isset($request["lstProducto"]) ? $request["lstProducto"] : "";
+    }
 
     public function insertar()
     {
@@ -41,7 +50,7 @@ class Venta
                     fk_idcliente,
                     fk_idproducto
                 ) VALUES (
-                    '$this->fecha',
+                    $this->fecha,
                      $this->cantidad,
                      $this->preciounitario,
                      $this->total,
@@ -64,7 +73,7 @@ class Venta
 
         $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE, Config::BBDD_PORT);
         $sql = "UPDATE ventas SET
-                fecha = '$this->fecha',
+                fecha = $this->fecha,
                 cantidad = $this->cantidad,
                 preciounitario = $this->preciounitario,
                 total = $this->total,

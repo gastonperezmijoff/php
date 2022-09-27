@@ -15,7 +15,7 @@ include_once("header.php");
             <a href="venta-listado.php" class="btn btn-primary mr-2">Nuevo></a>
         </div>
         <div class="col-12">
-            <table class="border border-hover">
+            <table class="table border-hover border">
             <thead>
                 <tr>
                     <th>Fecha</th>
