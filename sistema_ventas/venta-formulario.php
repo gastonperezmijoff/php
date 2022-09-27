@@ -2,9 +2,15 @@
 
 include_once("config.php");
 include_once("header.php");
+include_once("entidades/cliente.php");
+include_once("entidades/producto.php");
+include_once("entidades/venta.php");
 
+$cliente = new Cliente();
+$aClientes = $cliente->obtenerTodos();
 
-
+$producto = new Producto();
+$aProductos = $producto->obtenerTodos();
 
 
 ?>
@@ -42,21 +48,36 @@ include_once("header.php");
 
         <div class="col-6 form-group">
             <label for="lstCliente">Cliente</label>
-            <select required="" class="form-control selectpicker" data-live-search="true" name="lstClliente" id="lstClliente">
-                <option value="" disabled selected>Seleccionar</option>
+            <select required="" class="form-control selectpicker" data-live-search="true" name="lstCliente" id="lstCliente">
+            <option  disabled selected> Seleccionar</option>
+                <?php foreach ($aClientes as $cliente) :  ?>
+                    <?php if ($cliente->idcliente == $venta->fk_idcliente) : ?>
+                        <option selected value="<?php echo $cliente->idcliente; ?>"><?php echo $cliente->nombre; ?></option>
+                    
+                        <?php else : ?>
+                        <option value="<?php echo $cliente->idcliente; ?>"><?php echo $cliente->nombre; ?></option>
+                    <?php endif ?>
+                <?php endforeach ?>
             </select>
         </div>
 
         <div class="col-6 form-group">
             <label for="lstProducto">Producto</label>
             <select required="" class="form-control selectpicker" data-live-search="true" name="lstProducto" id="lstProducto">
-                <option value="" disabled selected>Seleccionar</option>
+            <option disabled selected> Seleccionar</option>
+                <?php foreach ($aProductos as $producto) :  ?>
+                    <?php if ($producto->idproducto == $venta->fk_idproducto) : ?>
+                        <option selected value="<?php echo $producto->idproducto; ?>"><?php echo $producto->nombre; ?></option>
+                    <?php else : ?>
+                        <option value="<?php echo $producto->idproducto; ?>"><?php echo $producto->nombre; ?></option>
+                    <?php endif ?>
+                <?php endforeach ?>
             </select>
         </div>
 
         <div class="col-6 form-group">
-            <label for="txtPrecio">Precio:</label>
-            <input type="text" required class="form-control" name="txtPrecio" id="txtPrecio" value="$ 0">
+            <label for="txtPrecioUni">Precio unitario:</label>
+            <input type="text" required class="form-control" name="txtPrecioUni" id="txtPrecioUni" value="$ 0">
         </div>
         <div class="col-6 form-group">
             <label for="txtCantidad">Cantidad:</label>

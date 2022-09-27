@@ -29,12 +29,14 @@ class Venta
     public function cargarFormulario($request)
     {
         $this->idventa = isset($request["id"]) ? $request["id"] : "";
-        $this->fecha = isset($request["txtFecha"]) ? $request["txtFecha"] : "";
         $this->cantidad = isset($request["txtCantidad"]) ? $request["txtCantidad"] : "";
-        $this->preciounitario = isset($request["txtPrecioUnitario"]) ? $request["txtPrecioUnitario"] : "";
+        $this->preciounitario = isset($request["txtPrecioUni"]) ? $request["txtPrecioUni"] : "";
         $this->total= isset($request["txtTotal"]) ? $request["txtTotal"] : "";
         $this->fk_idcliente = isset($request["lstCliente"]) ? $request["lstCliente"] : "";
         $this->fk_idproducto = isset($request["lstProducto"]) ? $request["lstProducto"] : "";
+        if (isset($request["txtAnioNac"]) && isset($request["txtMesNac"]) && isset($request["txtDiaNac"])) {
+        $this->fecha = $request["txtAnio"] . "-" . $request["txtMes"] . "-" . $request["txtDia"] . " " . $request["txtHora"];
+    }
     }
 
     public function insertar()
@@ -171,5 +173,3 @@ class Venta
     }
 
 }
-
-?>
