@@ -23,6 +23,7 @@ if($_POST){
             }   
     }else if(isset($_POST["btnBorrar"])){
         $tipoProducto->cargarFormulario($_REQUEST);
+        
         $tipoProducto->eliminar();
         header("Location: tipoproducto-listado.php");
     }

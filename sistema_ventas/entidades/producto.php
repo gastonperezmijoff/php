@@ -148,6 +148,10 @@ class Producto
         if (!$resultado = $mysqli->query($sql)) {
             printf("Error en query: %s\n", $mysqli->error . " " . $sql);
         }
+        $mysqli->close();
+
+    
+
 
         $aResultado = array();
         if($resultado){

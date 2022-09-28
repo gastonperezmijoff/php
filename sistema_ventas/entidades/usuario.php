@@ -48,6 +48,7 @@ class Usuario {
                     '" . $this->apellido ."',
                     '" . $this->correo ."'
                 );";
+                
         //Ejecuta la query
         if (!$mysqli->query($sql)) {
             printf("Error en query: %s\n", $mysqli->error . " " . $sql);
@@ -143,7 +144,13 @@ class Usuario {
 
     public function obtenerTodos(){
         $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE, Config::BBDD_PORT);
-        $sql = "SELECT idusuario, usuario, clave, nombre, apellido, correo FROM usuarios";
+        $sql = "SELECT idusuario, 
+                       usuario, 
+                       clave, 
+                       nombre, 
+                       apellido, 
+                       correo 
+                       FROM usuarios";
         if (!$resultado = $mysqli->query($sql)) {
             printf("Error en query: %s\n", $mysqli->error . " " . $sql);
         }

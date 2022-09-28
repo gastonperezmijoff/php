@@ -4,33 +4,39 @@
 include_once "config.php";
 include_once "entidades/usuario.php";
 
-$pg = "Edición de usuario";
-
 $usuario = new Usuario();
-$usuario->cargarFormulario($_REQUEST);
 
-if ($_POST) {
+if($_POST){
+    if(isset($_POST["btnGuardar"])){
 
-    if (isset($_POST["btnGuardar"])) {
-        if (isset($_GET["id"]) && $_GET["id"] > 0) {
-            //Actualizo un usuario existente
+        $usuario->cargarFormulario($_REQUEST);
+
+        if (isset($_GET["id"]) && $_GET["id"] > 0 ){
             $usuario->actualizar();
-        } else {
-            //Es nuevo
+            $msg["texto"] = "Actualizado correctamente";
+            $msg["codigo"] = "alert-success";
+            }else{           
             $usuario->insertar();
-        }
-    } else if (isset($_POST["btnBorrar"])) {
+            $msg["texto"] = "Insertado correctamente";
+            $msg["codigo"] = "alert-success";     
+            }   
+    }else if(isset($_POST["btnBorrar"])){
+        $usuario->cargarFormulario($_REQUEST);
         $usuario->eliminar();
-        header("Location: usuario-listado.php");
+        header("Location: usuario-formulario.php");
     }
 }
 
-if (isset($_GET["id"]) && $_GET["id"] > 0) {
-    $usuario->obtenerPorId();
+if(isset($_GET["id"]) && $_GET["id"] > 0 ){
+    $usuario ->cargarFormulario($_REQUEST);
+    $usuario ->obtenerPorId();
 }
 
+$usuario = new Usuario();
+$aUsuarios = $usuario->obtenerTodos();
 
-include_once "header.php";
+include_once("header.php");
+
 ?>
         <!-- Begin Page Content -->
         <div class="container-fluid">

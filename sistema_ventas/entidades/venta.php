@@ -40,7 +40,7 @@ class Venta
         $this->fk_idcliente = isset($request["lstCliente"]) ? $request["lstCliente"] : "";
         $this->fk_idproducto = isset($request["lstProducto"]) ? $request["lstProducto"] : "";
         $this->domicilio = isset($request["txtDomicilio"]) ? $request["txtDomicilio"] : "";
-        if (isset($request["txtAnioNac"]) && isset($request["txtMesNac"]) && isset($request["txtDiaNac"])) {
+        if (isset($request["txtAnio"]) && isset($request["txtMes"]) && isset($request["txtDia"])) {
         $this->fecha = $request["txtAnio"] . "-" . $request["txtMes"] . "-" . $request["txtDia"] . " " . $request["txtHora"];
     }
     }
@@ -65,7 +65,7 @@ class Venta
                      $this->fk_idcliente,
                      $this->fk_idproducto
                 );";
-        // print_r($sql);exit;
+         //print_r($sql);exit;
         //Ejecuta la query
         if (!$mysqli->query($sql)) {
             printf("Error en query: %s\n", $mysqli->error . " " . $sql);
@@ -167,14 +167,14 @@ class Venta
                 A.fecha,
                 A.cantidad,
                 A.fk_idcliente,
-                B.nombre as nombre_cliente,
+                B.nombre AS nombre_cliente,
                 A.fk_idproducto,
                 A.total,
                 A.preciounitario,
-                C.nombre as nombre_producto
+                C.nombre AS nombre_producto
             FROM ventas A
-            INNER JOIN cliente B ON A.fk_idcliente = B.idcliente
-            INNER JOIN productos ON A.fk_idproducto = C.idproducto
+            INNER JOIN clientes B ON A.fk_idcliente = B.idcliente
+            INNER JOIN productos C ON A.fk_idproducto = C.idproducto
             ORDER BY A.fecha DESC";
 
         if (!$resultado = $mysqli->query($sql)) {
@@ -192,6 +192,7 @@ class Venta
                 $entidadAux->idventa = $fila["idventa"];
                 $entidadAux->fecha= $fila["fecha"];
                 $entidadAux->cantidad = $fila["cantidad"];
+                $entidadAux->total = $fila["total"];
                 $entidadAux->preciounitario = $fila["preciounitario"];
                 $entidadAux->nombre_cliente = $fila["nombre_cliente"];
                 $entidadAux->nombre_producto = $fila["nombre_producto"];
