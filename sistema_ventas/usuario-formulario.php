@@ -4,6 +4,8 @@
 include_once "config.php";
 include_once "entidades/usuario.php";
 
+$pg = "Usuario formulario";
+
 $usuario = new Usuario();
 
 if($_POST){
